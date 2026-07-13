@@ -267,6 +267,8 @@ class Player(BaseModel):
         )
         result: Dict[str, int] = {}
         for item in ext_status_point_list:
+            if "StatusName" not in item:
+                continue
             status_name = PalObjects.get_value(item["StatusName"])
             mapped_name = PalObjects.ExStatusNameMap.get(status_name)
             if mapped_name is None:
